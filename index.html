@@ -1,413 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LayerLens - Peeling Back the Layers of Generative AI</title>
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon-32x32.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+
     <style>
-        @font-face {
-            font-family: 'Geist';
-            src: url('https://layerlens.com/fonts/Geist-Regular.woff2') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-        }
-        
-        @font-face {
-            font-family: 'Geist';
-            src: url('https://layerlens.com/fonts/Geist-SemiBold.woff2') format('woff2');
-            font-weight: 600;
-            font-style: normal;
-        }
-        
-        @font-face {
-            font-family: 'Geist';
-            src: url('https://layerlens.com/fonts/Geist-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
+      @font-face {
+        font-family: "Geist";
+        src: url("https://layerlens.com/fonts/Geist-Regular.woff2")
+          format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
 
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #1a1a1a;
-            --primary-color: #0044FF;
-            --gradient-start: #E8EDFF;
-            --gradient-end: #ffffff;
-            --text-secondary: #64748b;
-        }
+      @font-face {
+        font-family: "Geist";
+        src: url("https://layerlens.com/fonts/Geist-SemiBold.woff2")
+          format("woff2");
+        font-weight: 600;
+        font-style: normal;
+      }
 
-        [data-theme="dark"] {
-            --bg-color: #111827;
-            --text-color: #ffffff;
-            --primary-color: #0044FF;
-            --gradient-start: #1E1B4B;
-            --gradient-end: #111827;
-            --text-secondary: #94a3b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s ease;
-            font-family: 'Geist', sans-serif;
-        }
-
-        .header {
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            background-color: transparent;
-            z-index: 100;
-        }
-
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .email-input {
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            border: 1px solid rgba(128, 128, 128, 0.2);
-            background: rgba(255, 255, 255, 0.9);
-            min-width: 240px;
-            font-family: 'Geist', sans-serif;
-            font-size: 15px;
-        }
-
-        .stay-updated-btn {
-            padding: 0.75rem 1.25rem;
-            background: #0044FF;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Geist', sans-serif;
-            font-weight: 600;
-            font-size: 15px;
-            transition: background-color 0.2s ease;
-        }
-
-        .stay-updated-btn:hover {
-            background: #0036CC;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: var(--text-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(128, 128, 128, 0.1);
-        }
-        
-
-
-        /* Updated hero section styling with background gradients */
-        .hero {
-            min-height: 100vh;
-            padding: 8rem 2rem 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 50%;
-
-            /* Position and center the image to scale nicely on all screens */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-
-            background-image: url("assets/ll_hero_light.png");
-            transition: background 0.3s ease;
-        }
-
-        /* Dark mode hero background */
-        [data-theme="dark"] .hero {
-            background-image: url("assets/ll_hero_dark.png");  /* Dark mode gradient */
-        }
-
-        /* Keep existing hero content styles */
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .we-are-layerlens {
-            font-family: 'Geist', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 16.9px;
-            letter-spacing: 1.625px;
-            text-align: left;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-    font-family: 'Geist', sans-serif;
-    font-size: 60px;
-    font-weight: 600;
-    line-height: 65px;
-    letter-spacing: -2px;
-    text-align: left;
-    color: #00136D;  /* Light mode color */
-    margin-bottom: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-[data-theme="dark"] h1 {
-    color: #FFFFFF;  /* Dark mode color */
-}
-
-/* Keeping responsive styles */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 40px;
-        line-height: 45px;
-        letter-spacing: -1.5px;
-    }
-}
-
-        .subtitle {
-            font-family: 'Geist', sans-serif;
-            font-size: 19px;
-            font-weight: 400;
-            line-height: 32px;
-            letter-spacing: -0.20000000298023224px;
-            text-align: left;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 600px;
-        }
-
-        .main-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .main-content p {
-            font-family: 'PT Serif', serif;
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 38px;
-            text-align: left;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight {
-            font-family: 'PT Serif', serif;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 38px;
-            text-align: left;
-            color: #0044FF;
-        }
-
-        footer {
-            padding: 3rem 2rem;
-            border-top: 1px solid rgba(128, 128, 128, 0.1);
-            background: #151918;
-            color:#ffffff;
-
-            
-        }
-
-        .footer-tagline {
-            font-family: Geist;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 26px;
-            text-align: left;
-            
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .footer-links a {
-            font-family: 'Geist', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 26px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-color);
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-                line-height: 45px;
-                letter-spacing: -1.5px;
-            }
-            
-            .subtitle {
-                font-size: 17px;
-                line-height: 28px;
-            }
-            
-            .main-content p {
-                font-size: 18px;
-                line-height: 34px;
-            }
-
-            .header {
-                padding: 1.25rem;
-            }
-
-            .email-input {
-                min-width: 180px;
-            }
-
-            .stay-updated-btn {
-                padding: 0.75rem 1rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .header-right {
-                gap: 0.5rem;
-            }
-
-            .email-input {
-                min-width: 140px;
-            }
-        }
+      @font-face {
+        font-family: "Geist";
+        src: url("https://layerlens.com/fonts/Geist-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
     </style>
-</head>
-<body>
-    <header class="header">
-        <img src="assets/light_logo.png" alt="LayerLens Logo" class="logo" id="theme-logo">
-        <div class="header-right">
-            <input type="email" placeholder="E-Mail Address" class="email-input">
-            <button class="stay-updated-btn">Stay Updated!</button>
-            <button class="theme-toggle" onclick="toggleTheme()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"/>
-                    <line x1="12" y1="1" x2="12" y2="3"/>
-                    <line x1="12" y1="21" x2="12" y2="23"/>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                    <line x1="1" y1="12" x2="3" y2="12"/>
-                    <line x1="21" y1="12" x2="23" y2="12"/>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                </svg>
-            </button>
-        </div>
-    </header>
+  </head>
+  <body class="bg-white dark:bg-[#1D1D1D]">
+    <div
+      class="relative flex flex-col lg:flex-row w-full h-[1200px] lg:h-[830px] flex-col px-3 py-12 pt-10 text-gray-600 lg:px-8 bg-[radial-gradient(circle,_rgba(204,214,255,1)_0%,_rgba(255,255,255,1)_50%,_rgba(204,214,255,1)_100%)] dark:bg-[linear-gradient(160deg,_rgba(115,115,115,0.5)_0%,_rgba(0,44,204,0.5)_15%,_rgba(0,28,128,1)_20%,_rgba(115,115,115,0.5)_90%)]"
+    >
+      <div
+        class="flex flex-col gap-y-24 lg:gap-y-36 h-full container mx-auto px-10 lg:px-32"
+      >
+        <div
+          class="flex flex-col gap-y-5 lg:flex-row justify-between items-center"
+        >
+          <img src="assets/light_logo.png" alt="LayerLens" id="logo" />
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="we-are-layerlens">WE ARE LAYERLENS</div>
-            <h1>The AI Evaluation Company</h1>
-            <p class="subtitle">Creating the world's most comprehensive and trustworthy suite of evaluations, tests, and benchmarks for foundational models</p>
+          <button
+            class="rounded-md bg-white dark:bg-transparent hover:dark:bg-transparent dark:text-white items-center flex justify-center p-3 border h-12 border-gray-200 hover:bg-gray-50"
+            onclick="toggleDarkMode()"
+          >
+            <i id="theme-icon" class="text-2xl ph ph-sun"></i>
+          </button>
         </div>
+
+        <div class="flex flex-col gap-y-10 text-gray-600 dark:text-white">
+          <div class="flex flex-col gap-y-5">
+            <div
+              class="text-4xl lg:text-7xl tracking-tighter font-semibold leading-none"
+            >
+              Peeling Back the <br />
+              Layers of <br />
+              Generative AI
+            </div>
+            <div class="leading-8 font-normal text-xl tracking-wide">
+              We are building the world's first on-demand, no code tool <br />
+              for benchmarking and running evaluations against foundational
+              models <br />
+            </div>
+          </div>
+
+          <div class="flex flex-col lg:flex-row gap-5 lg:items-center">
+            <form
+              action="https://layerlens.us17.list-manage.com/subscribe/post?u=82dd3f8e78273bcc7c72a2f8c&amp;id=630834ff98&amp;f_id=000fc2e1f0"
+              method="post"
+              target="_blank"
+              class="flex flex-col lg:flex-row gap-5 lg:items-center"
+            >
+              <input
+                type="email"
+                name="EMAIL"
+                placeholder="Enter your E-Mail Address"
+                class="bg-white p-3 rounded-md border border-gray-300 max-w-[300px] text-black placeholder-gray-500 focus:outline-none"
+                required
+              />
+
+              <div aria-hidden="true" style="position: absolute; left: -5000px">
+                <input
+                  type="text"
+                  name="b_82dd3f8e78273bcc7c72a2f8c_630834ff98"
+                  tabindex="-1"
+                  value=""
+                />
+              </div>
+
+              <input
+                type="submit"
+                class="px-4 py-3 rounded-md max-w-[200px] text-white font-semibold dark:bg-black bg-[#0038ff] hover:bg-purple-800 hover:dark:bg-purple-800 cursor-pointer"
+                value="Stay Updated"
+              />
+            </form>
+          </div>
+        </div>
+
+        <div class="absolute pl-3 overflow-hidden right-0 bottom-0">
+          <img
+            src="assets/preview.png"
+            alt="Preview"
+            class="rounded-tl-2xl border-l-8 border-t-8 border-gray-200 w-[550px] lg:w-[500px] xl:w-[700px]"
+          />
+        </div>
+      </div>
+    </div>
+
+    <section
+      class="py-14 flex flex-col items-center gap-y-14 container mx-auto px-10 lg:px-32 text-xl text-gray-600 dark:text-white dark:bg-[#1D1D1D]"
+    >
+      <div
+        class="text-white px-10 py-14 flex flex-col gap-y-5 rounded-2xl bg-[linear-gradient(160deg,_rgba(0,44,204,0.8)_0%,_rgba(0,28,128,1)_20%)] dark:bg-[linear-gradient(160deg,_rgba(115,115,115,0.5)_0%,_rgba(0,44,204,0.5)_15%,_rgba(0,28,128,1)_20%,_rgba(115,115,115,0.5)_90%)]"
+      >
+        <p class="text-4xl font-bold">
+          We have raised $6.5 M in our pre-seed fundraising round as part of our
+          mission to bring transperency to generative AI.
+        </p>
+      </div>
     </section>
 
-    <main class="main-content">
-        <p>Generative AI has a testing problem. Advancements are being made at breakneck speeds; indeed, every week seems to be a year when it comes to the proliferation of new models or the release of a new technical paradigm. However, there is no reliable method to ascertain the actual ability of these models over time.</p>
-        
-        <p><span class="highlight">This is where LayerLens comes in.</span> Our mission is to provide a platform that makes benchmarking and evaluation accessible to AI science and engineering teams. We aim to build trust in the generative AI ecosystem by developing practical, reliable evaluations that align with real-world use cases and truly challenge the capabilities of foundation models.  
-            If we succeed, we will empower developers to select the best foundation models for specific tasks, help researchers understand model capabilities and limitations, and enable organizations to trust their generative AI infrastructure. 
-        
-        <p>If you’re passionate about bringing transparency to the generative AI space, please reach out <a href="mailto:accounts@layerlens.ai" style="color: #0044FF; text-decoration: none;">here</a>.</p>
-    </main>
+    <section
+      class="py-14 flex flex-col items-center gap-y-10 container mx-auto px-10 lg:px-32 text-xl text-gray-600 dark:text-white dark:bg-[#1D1D1D]"
+    >
+      <p class="text-4xl font-bold text-center">
+        Generative AI has a testing problem.
+      </p>
+      <p class="text-xl text-center leading-relaxed">
+        Advancements are being made at breakneck speed. Indeed, every week seems
+        to be a year when it comes to the proliferation of new models or the
+        release of a new technical paradigm. However, there is no reliable
+        method to ascertain the actual ability of these models over time.
+        <span class="font-bold">This is where LayerLens comes in.</span>
+      </p>
 
-    <footer>
-        <div style="display: flex; justify-content: space-between; align-items: left; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <img style="width: 182px;
-            height: 70px;
-            top: 86.91px;
-            gap: 0px;
-            opacity: 0px;
-            " src="assets/bottom_logo.png" alt="LayerLens Logo" style="opacity: 0.7;">
-            <div style="display: flex; gap: 1rem; align-items: center;">
-                <a href="https://x.com/layerlens_ai" style="opacity: 0.9;">
-                    <img style="width: 18.01px;
-                    height: 16.09px;
-                    left: 18.07px;
-                    gap: 0px;
-                    opacity: 0px;
-                    angle: -180 deg;" src="assets/x_logo.png" alt="X Logo">
-                </a>
-                <a href="https://www.linkedin.com/company/layerlens/" style="opacity: 0.9;">
-                    <img style="width: 18.01px;
-                    height: 16.09px;
-                    left: 18.07px;
-                    gap: 0px;
-                    opacity: 0px;
-                    angle: -180 deg;"src="assets/l.png" alt="LinkedIn Logo">
-                </a>
+      <div class="grid gap-16 grid-cols-1 lg:grid-cols-2 lg:grid-cols-3">
+        <div class="flex flex-col gap-y-5 items-center">
+          <div
+            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
+          >
+            <i
+              class="ph ph-magnifying-glass text-2xl font-bold text-[#0038ff] dark:text-white"
+            ></i>
+          </div>
+          <p class="font-bold text-xl text-center">
+            Easy Evaluation for AI Models
+          </p>
+          <p class="text-md text-center leading-8">
+            Our goal is to provide businesses and developers with an easy,
+            digestible way to assess AI model performance for industry-specific
+            use-cases.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-y-5 items-center">
+          <div
+            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
+          >
+            <i
+              class="ph ph-lightning text-2xl font-bold text-[#0038ff] dark:text-white"
+            ></i>
+          </div>
+          <p class="font-bold text-xl text-center">In-depth Analysis</p>
+          <p class="text-md text-center leading-8">
+            We provide a wide set of metrics for every evaluation that we run,
+            allowing for in-depth analysis into exactly how well a model is
+            performing on a specific use-case.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-y-5 items-center">
+          <div
+            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
+          >
+            <i
+              class="ph ph-sparkle text-2xl font-bold text-[#0038ff] dark:text-white"
+            ></i>
+          </div>
+          <p class="font-bold text-xl text-center">Wide Coverage</p>
+          <p class="text-md text-center leading-8">
+            We currently have the widest set of evaluation datasets and models,
+            with over 50 evaluation datasets and 200 generative AI models to
+            pick and choose from.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-y-5 items-center">
+          <div
+            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
+          >
+            <i
+              class="ph ph-eye text-2xl font-bold text-[#0038ff] dark:text-white"
+            ></i>
+          </div>
+          <p class="font-bold text-xl text-center">New Evaluations</p>
+          <p class="text-md text-center leading-8">
+            We plan on creating and supporting new evals for practical, everyday
+            tasks.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-y-5 items-center">
+          <div
+            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
+          >
+            <i
+              class="ph ph-browser text-2xl font-bold text-[#0038ff] dark:text-white"
+            ></i>
+          </div>
+          <p class="font-bold text-xl text-center">Private Evaluations</p>
+          <p class="text-md text-center leading-8">
+            We will support the execution of custom datasets, against both
+            public models and custom AI applications.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-y-5 items-center">
+          <div
+            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
+          >
+            <i
+              class="ph ph-chat-circle-dots text-2xl font-bold text-[#0038ff] dark:text-white"
+            ></i>
+          </div>
+          <p class="font-bold text-xl text-center">Call to Innovators</p>
+          <p class="text-md text-center leading-8">
+            If you are passionate about AI and want to join a team of skilled
+            engineers, reach out! Alternatively, if you are building at the edge
+            of AI, we would love to talk to you. Please email us
+            <a href="mailto:accounts@layerlens.ai" class="text-[#0038ff]"
+              >here</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-[#151918] py-20">
+      <div class="flex gap-y-6 flex-col container mx-auto px-10 lg:px-32">
+        <div
+          class="flex lg:flex-row flex-col gap-y-5 py-5 justify-between items-center text-white"
+        >
+          <div class="flex flex-col gap-y-3">
+            <p class="text-2xl font-bold">Join Our Newsletter</p>
+            <p class="text-md">We'll send you occasional updates. No spam.</p>
+
+            <div class="flex gap-x-3">
+              <a href="https://x.com/layerlens_ai"
+                ><i class="ph ph-x-logo text-2xl hover:text-[#0038ff]"></i
+              ></a>
+              <a href="https://www.linkedin.com/company/layerlens/"
+                ><i
+                  class="ph ph-linkedin-logo text-2xl hover:text-[#0038ff]"
+                ></i
+              ></a>
             </div>
+          </div>
+          <div
+            class="flex flex-col lg:flex-row gap-y-5 gap-x-5 lg:items-center"
+          >
+            <form
+              action="https://layerlens.us17.list-manage.com/subscribe/post?u=82dd3f8e78273bcc7c72a2f8c&amp;id=630834ff98&amp;f_id=000fc2e1f0"
+              method="post"
+              target="_blank"
+              class="flex flex-col lg:flex-row gap-y-5 gap-x-5 lg:items-center"
+            >
+              <input
+                type="email"
+                name="EMAIL"
+                placeholder="Enter your E-Mail Address"
+                class="bg-white p-3 rounded-md max-w-[300px] text-black placeholder-gray-500 focus:outline-none"
+                required
+              />
+
+              <div aria-hidden="true" style="position: absolute; left: -5000px">
+                <input
+                  type="text"
+                  name="b_82dd3f8e78273bcc7c72a2f8c_630834ff98"
+                  tabindex="-1"
+                  value=""
+                />
+              </div>
+
+              <input
+                type="submit"
+                class="px-4 py-3 rounded-md font-semibold bg-[#0038ff] hover:bg-purple-800 cursor-pointer text-white"
+                value="Stay Updated"
+              />
+            </form>
+          </div>
         </div>
-        <p class="footer-tagline">The AI Evaluation Company</p>
-        <div class="footer-links">
+
+        <div class="border-t border-[#0038ff] w-full"></div>
+
+        <div
+          class="flex flex-col lg:flex-row gap-y-5 text-white justify-between items-center"
+        >
+          <img class="w-[200px]" src="assets/dark_logo.png" alt="LayerLens" />
+          <p class="text-md">&copy; LayerLens. All rights reserved.</p>
         </div>
+      </div>
     </footer>
 
     <script>
-    function toggleTheme() {
-        const body = document.documentElement;
-        const logo = document.getElementById('theme-logo');
-        const currentTheme = body.getAttribute('data-theme');
-        
-        if (currentTheme === 'dark') {
-            body.removeAttribute('data-theme');
-            logo.src = 'assets/light_logo.png';
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            logo.src = 'assets/dark_logo.png';
-        }
-    }
+      window.onload = () => {
+        const html = document.documentElement;
+        const userPreference = localStorage.getItem("theme");
+        const isDarkMode = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
 
-    // Check initial theme on page load
-    window.addEventListener('DOMContentLoaded', (event) => {
-        const body = document.documentElement;
-        const logo = document.getElementById('theme-logo');
-        const currentTheme = body.getAttribute('data-theme');
-        
-        if (currentTheme === 'dark') {
-            logo.src = 'assets/dark_logo.png';
+        const logo = document.getElementById("logo");
+        const themeIcon = document.getElementById("theme-icon");
+
+        if (userPreference === "dark" || (!userPreference && isDarkMode)) {
+          logo.src = "assets/dark_logo.png";
+          themeIcon.classList.remove("ph-sun");
+          themeIcon.classList.add("ph-moon");
+        } else {
+          logo.src = "assets/light_logo.png";
+          themeIcon.classList.remove("ph-moon");
+          themeIcon.classList.add("ph-sun");
         }
-    });
+      };
+
+      function toggleDarkMode() {
+        const html = document.documentElement;
+        html.classList.toggle("dark");
+
+        const currentTheme = html.classList.contains("dark") ? "dark" : "light";
+        localStorage.setItem("theme", currentTheme);
+
+        const logo = document.getElementById("logo");
+        const themeIcon = document.getElementById("theme-icon");
+        if (currentTheme === "dark") {
+          logo.src = "assets/dark_logo.png";
+          themeIcon.classList.remove("ph-sun");
+          themeIcon.classList.add("ph-moon");
+        } else {
+          logo.src = "assets/light_logo.png";
+          themeIcon.classList.remove("ph-moon");
+          themeIcon.classList.add("ph-sun");
+        }
+      }
+
+      // Set initial theme based on user preference or localStorage
+      document.addEventListener("DOMContentLoaded", () => {
+        const theme = localStorage.getItem("theme") || "light";
+        document.documentElement.classList.add(theme);
+      });
     </script>
-</body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </body>
 </html>
