@@ -330,10 +330,14 @@
         const themeIcon = document.getElementById("theme-icon");
 
         if (userPreference === "dark" || (!userPreference && isDarkMode)) {
+          html.classList.remove("light");
+          html.classList.add("dark");
           logo.src = "assets/dark_logo.png";
           themeIcon.classList.remove("ph-sun");
           themeIcon.classList.add("ph-moon");
         } else {
+          html.classList.remove("dark");
+          html.classList.add("light");
           logo.src = "assets/light_logo.png";
           themeIcon.classList.remove("ph-moon");
           themeIcon.classList.add("ph-sun");
