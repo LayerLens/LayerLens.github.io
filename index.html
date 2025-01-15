@@ -75,8 +75,7 @@
             </div>
             <div class="leading-8 font-normal text-xl tracking-wide">
               We are building the world's first on-demand, no code tool <br />
-              for benchmarking and running evaluations against foundational
-              models <br />
+              for benchmarking and running evaluations against foundational models <br />
             </div>
           </div>
 
@@ -130,9 +129,15 @@
         class="text-white px-10 py-14 flex flex-col gap-y-5 rounded-2xl bg-[linear-gradient(160deg,_rgba(0,44,204,0.8)_0%,_rgba(0,28,128,1)_20%)] dark:bg-[linear-gradient(160deg,_rgba(115,115,115,0.5)_0%,_rgba(0,44,204,0.5)_15%,_rgba(0,28,128,1)_20%,_rgba(115,115,115,0.5)_90%)]"
       >
         <p class="text-4xl font-bold">
-          We have raised $6.5 M in our pre-seed fundraising round as part of our
-          mission to bring transperency to generative AI.
+  
+         Atlas Beta Release
+          
         </p>
+        <p class="text-xl leading-relaxed">
+          We are opening our flagship benchmarking and testing product, Atlas, for private betas. If you are a data scientist, engineer, or founder struggling with selecting the right generative AI model for your use-cases, we would love to talk to you.
+        
+        </p>
+        <a class = "px-4 py-3 rounded-md max-w-[200px] text-white font-semibold light:bg-white bg-[#0038ff] hover:bg-purple-800 hover:dark:bg-purple-800 cursor-pointer" href = https://cal.com/archie-chaudhury-kt52hm/15min?date=2025-01-15&month=2025-01">Book a demo here</a>
       </div>
     </section>
 
@@ -164,8 +169,7 @@
           </p>
           <p class="text-md text-center leading-8">
             Our goal is to provide businesses and developers with an easy,
-            digestible way to assess AI model performance for industry-specific
-            use-cases.
+            digestible way to assess AI model performance for industry-specific use-cases.
           </p>
         </div>
 
@@ -177,11 +181,11 @@
               class="ph ph-lightning text-2xl font-bold text-[#0038ff] dark:text-white"
             ></i>
           </div>
-          <p class="font-bold text-xl text-center">In-depth Analysis</p>
+          <p class="font-bold text-xl text-center">
+            In-depth Analysis
+          </p>
           <p class="text-md text-center leading-8">
-            We provide a wide set of metrics for every evaluation that we run,
-            allowing for in-depth analysis into exactly how well a model is
-            performing on a specific use-case.
+           Evaluations are run on-demand, requiring no manual code execution or library management. All evaluation results for public models are displayed in a comprehensive leaderboard.
           </p>
         </div>
 
@@ -195,9 +199,7 @@
           </div>
           <p class="font-bold text-xl text-center">Wide Coverage</p>
           <p class="text-md text-center leading-8">
-            We currently have the widest set of evaluation datasets and models,
-            with over 50 evaluation datasets and 200 generative AI models to
-            pick and choose from.
+            We currently support over 200 generative AI models and over 50 evaluation datasets, across numerous categories and use-cases.
           </p>
         </div>
 
@@ -209,10 +211,9 @@
               class="ph ph-eye text-2xl font-bold text-[#0038ff] dark:text-white"
             ></i>
           </div>
-          <p class="font-bold text-xl text-center">New Evaluations</p>
+          <p class="font-bold text-xl text-center">Use-Case Specific Evals</p>
           <p class="text-md text-center leading-8">
-            We plan on creating and supporting new evals for practical, everyday
-            tasks.
+            We plan on creating and supporting new evals for practical, everyday tasks. Rather than relying on academic-intensive datasets, you will be able to leverage custom datasets focused on use-cases such as SQL DB management to spreadsheet analysis. 
           </p>
         </div>
 
@@ -224,10 +225,10 @@
               class="ph ph-browser text-2xl font-bold text-[#0038ff] dark:text-white"
             ></i>
           </div>
-          <p class="font-bold text-xl text-center">Private Evaluations</p>
+          <p class="font-bold text-xl text-center">Enterprise Focus</p>
           <p class="text-md text-center leading-8">
-            We will support the execution of custom datasets, against both
-            public models and custom AI applications.
+            We are currently working on an enterprise-specific experience, that will allow for propiterary datasets and private models to be seamlessly integrated within the LayerLens platform. 
+            
           </p>
         </div>
 
@@ -241,12 +242,8 @@
           </div>
           <p class="font-bold text-xl text-center">Call to Innovators</p>
           <p class="text-md text-center leading-8">
-            If you are passionate about AI and want to join a team of skilled
-            engineers, reach out! Alternatively, if you are building at the edge
-            of AI, we would love to talk to you. Please email us
-            <a href="mailto:accounts@layerlens.ai" class="text-[#0038ff]"
-              >here</a
-            >
+            If you are passionate about jailbreaking, datasets, and distributed
+            computing, and want to join a team of skilled engineers, reach out! Alternatively, if you are building at the edge of AI and want to integrate evals into your application, we would love to talk to you. 
           </p>
         </div>
       </div>
@@ -259,18 +256,9 @@
         >
           <div class="flex flex-col gap-y-3">
             <p class="text-2xl font-bold">Join Our Newsletter</p>
-            <p class="text-md">We'll send you occasional updates. No spam.</p>
-
-            <div class="flex gap-x-3">
-              <a href="https://x.com/layerlens_ai"
-                ><i class="ph ph-x-logo text-2xl hover:text-[#0038ff]"></i
-              ></a>
-              <a href="https://www.linkedin.com/company/layerlens/"
-                ><i
-                  class="ph ph-linkedin-logo text-2xl hover:text-[#0038ff]"
-                ></i
-              ></a>
-            </div>
+            <p class="text-md">
+              We'll send you occasional updates. No spam.
+            </p>
           </div>
           <div
             class="flex flex-col lg:flex-row gap-y-5 gap-x-5 lg:items-center"
@@ -330,14 +318,10 @@
         const themeIcon = document.getElementById("theme-icon");
 
         if (userPreference === "dark" || (!userPreference && isDarkMode)) {
-          html.classList.remove("light");
-          html.classList.add("dark");
           logo.src = "assets/dark_logo.png";
           themeIcon.classList.remove("ph-sun");
           themeIcon.classList.add("ph-moon");
         } else {
-          html.classList.remove("dark");
-          html.classList.add("light");
           logo.src = "assets/light_logo.png";
           themeIcon.classList.remove("ph-moon");
           themeIcon.classList.add("ph-sun");
