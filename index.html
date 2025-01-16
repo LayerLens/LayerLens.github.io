@@ -376,13 +376,7 @@
         const themeIcon = document.getElementById("theme-icon");
 
         if (userPreference === "dark" || (!userPreference && isDarkMode)) {
-          logo.src = "assets/dark_logo.png";
-          themeIcon.classList.remove("ph-sun");
-          themeIcon.classList.add("ph-moon");
-        } else {
-          logo.src = "assets/light_logo.png";
-          themeIcon.classList.remove("ph-moon");
-          themeIcon.classList.add("ph-sun");
+          toggleDarkMode();
         }
       };
 
