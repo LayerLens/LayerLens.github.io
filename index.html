@@ -46,21 +46,29 @@
   </head>
   <body class="bg-white dark:bg-[#1D1D1D]">
     <div
-      class="relative flex flex-col lg:flex-row w-full h-[1200px] lg:h-[830px] flex-col px-3 py-12 pt-10 text-gray-600 lg:px-8 bg-[radial-gradient(circle,_rgba(204,214,255,1)_0%,_rgba(255,255,255,1)_50%,_rgba(204,214,255,1)_100%)] dark:bg-[linear-gradient(160deg,_rgba(115,115,115,0.5)_0%,_rgba(0,44,204,0.5)_15%,_rgba(0,28,128,1)_20%,_rgba(115,115,115,0.5)_90%)]"
+      class="relative flex flex-col lg:flex-row w-full h-[1050px] lg:h-[830px] flex-col py-12 pt-6 text-gray-600 bg-[radial-gradient(circle,_rgba(204,214,255,1)_0%,_rgba(255,255,255,1)_50%,_rgba(204,214,255,1)_100%)] dark:bg-[linear-gradient(160deg,_rgba(115,115,115,0.5)_0%,_rgba(0,44,204,0.5)_15%,_rgba(0,28,128,1)_20%,_rgba(115,115,115,0.5)_90%)]"
     >
       <div
-        class="flex flex-col gap-y-24 lg:gap-y-36 h-full container mx-auto px-10 lg:px-32"
+        class="flex flex-col gap-y-24 lg:gap-y-36 h-full container mx-auto px-10 lg:px-[80px]"
       >
         <div
           class="flex flex-col gap-y-5 lg:flex-row justify-between items-center"
         >
-          <img src="assets/light_logo.png" alt="LayerLens" id="logo" />
+          <img
+            src="assets/light_logo.png"
+            alt="LayerLens"
+            id="logo"
+            class="w-[182px] h-auto"
+          />
 
           <button
             class="rounded-md bg-white dark:bg-transparent hover:dark:bg-transparent dark:text-white items-center flex justify-center p-3 border h-12 border-gray-200 hover:bg-gray-50"
             onclick="toggleDarkMode()"
           >
-            <i id="theme-icon" class="text-2xl ph ph-sun"></i>
+            <i
+              id="theme-icon"
+              class="text-2xl ph ph-sun fill-[#0039FF] dark:fill-[#FFFFFF]"
+            ></i>
           </button>
         </div>
 
@@ -75,7 +83,8 @@
             </div>
             <div class="leading-8 font-normal text-xl tracking-wide">
               We are building the world's first on-demand, no code tool <br />
-              for benchmarking and running evaluations against foundational models <br />
+              for benchmarking and running evaluations <br />
+              against foundational models <br />
             </div>
           </div>
 
@@ -116,38 +125,45 @@
           <img
             src="assets/preview.png"
             alt="Preview"
-            class="rounded-tl-2xl border-l-8 border-t-8 border-gray-200 w-[550px] lg:w-[500px] xl:w-[700px]"
+            class="rounded-tl-2xl border-l-8 border-t-8 border-gray-200 w-[550px] md: lg:w-[600px] xl:w-[700px] 2xl:w-[900px]"
           />
         </div>
       </div>
     </div>
 
     <section
-      class="py-14 flex flex-col items-center gap-y-14 container mx-auto px-10 lg:px-32 text-xl text-gray-600 dark:text-white dark:bg-[#1D1D1D]"
+      class="py-14 flex flex-col items-center gap-y-14 container mx-auto px-10 lg:px-[80px] text-xl text-gray-600 dark:text-white dark:bg-[#1D1D1D]"
     >
       <div
         class="text-white px-10 py-14 flex flex-col gap-y-5 rounded-2xl bg-[linear-gradient(160deg,_rgba(0,44,204,0.8)_0%,_rgba(0,28,128,1)_20%)] dark:bg-[linear-gradient(160deg,_rgba(115,115,115,0.5)_0%,_rgba(0,44,204,0.5)_15%,_rgba(0,28,128,1)_20%,_rgba(115,115,115,0.5)_90%)]"
       >
-        <p class="text-4xl font-bold">
-  
-         Atlas Beta Release
-          
-        </p>
+        <p class="text-4xl font-bold">Atlas Beta Release</p>
         <p class="text-xl leading-relaxed">
-          We are opening our flagship benchmarking and testing product, Atlas, for private betas. If you are a data scientist, engineer, or founder struggling with selecting the right generative AI model for your use-cases, we would love to talk to you.
-        
+          We are opening our flagship benchmarking and testing product, Atlas,
+          for private betas. If you are a data scientist, engineer, or founder
+          struggling with selecting the right generative AI model for your
+          use-cases, we would love to talk to you.
         </p>
-        <a class = "px-4 py-3 rounded-md max-w-[200px] text-white font-semibold light:bg-white bg-[#0038ff] hover:bg-purple-800 hover:dark:bg-purple-800 cursor-pointer" href = https://cal.com/archie-chaudhury-kt52hm/15min?date=2025-01-15&month=2025-01">Book a demo here</a>
+        <a
+          class="px-4 py-3 rounded-lg max-w-[180px] text-center text-[#414651] hover:text-white dark:hover:text-white font-semibold bg-white hover:bg-purple-800 hover:dark:bg-purple-800 cursor-pointer"
+          href="https://cal.com/archie-chaudhury-kt52hm/15min?date=2025-01-15&month=2025-01"
+        >
+          Book a Demo
+        </a>
       </div>
     </section>
 
     <section
-      class="py-14 flex flex-col items-center gap-y-10 container mx-auto px-10 lg:px-32 text-xl text-gray-600 dark:text-white dark:bg-[#1D1D1D]"
+      class="py-14 flex flex-col items-center gap-y-10 container mx-auto px-10 lg:px-[80px] text-xl text-gray-600 dark:text-white dark:bg-[#1D1D1D]"
     >
-      <p class="text-4xl font-bold text-center">
+      <p
+        class="text-4xl font-semibold text-[#414651] dark:text-white text-center"
+      >
         Generative AI has a testing problem.
       </p>
-      <p class="text-xl text-center leading-relaxed">
+      <p
+        class="text-xl text-center leading-relaxed text-[#414651] dark:text-white"
+      >
         Advancements are being made at breakneck speed. Indeed, every week seems
         to be a year when it comes to the proliferation of new models or the
         release of a new technical paradigm. However, there is no reliable
@@ -161,45 +177,20 @@
             class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
           >
             <i
-              class="ph ph-magnifying-glass text-2xl font-bold text-[#0038ff] dark:text-white"
-            ></i>
-          </div>
-          <p class="font-bold text-xl text-center">
-            Easy Evaluation for AI Models
-          </p>
-          <p class="text-md text-center leading-8">
-            Our goal is to provide businesses and developers with an easy,
-            digestible way to assess AI model performance for industry-specific use-cases.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-y-5 items-center">
-          <div
-            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
-          >
-            <i
-              class="ph ph-lightning text-2xl font-bold text-[#0038ff] dark:text-white"
-            ></i>
-          </div>
-          <p class="font-bold text-xl text-center">
-            In-depth Analysis
-          </p>
-          <p class="text-md text-center leading-8">
-           Evaluations are run on-demand, requiring no manual code execution or library management. All evaluation results for public models are displayed in a comprehensive leaderboard.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-y-5 items-center">
-          <div
-            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
-          >
-            <i
               class="ph ph-sparkle text-2xl font-bold text-[#0038ff] dark:text-white"
             ></i>
           </div>
-          <p class="font-bold text-xl text-center">Wide Coverage</p>
-          <p class="text-md text-center leading-8">
-            We currently support over 200 generative AI models and over 50 evaluation datasets, across numerous categories and use-cases.
+          <p
+            class="font-semibold text-[#414651] dark:text-white text-xl text-center"
+          >
+            Easy Evaluation for AI Models
+          </p>
+          <p
+            class="text-[#414651] dark:text-white text-base font-normal text-center"
+          >
+            Our goal is to provide businesses and developers with an easy,
+            digestible way to assess AI model performance for industry-specific
+            use-cases.
           </p>
         </div>
 
@@ -208,12 +199,20 @@
             class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
           >
             <i
-              class="ph ph-eye text-2xl font-bold text-[#0038ff] dark:text-white"
+              class="ph ph-magnifying-glass text-2xl font-bold text-[#0038ff] dark:text-white"
             ></i>
           </div>
-          <p class="font-bold text-xl text-center">Use-Case Specific Evals</p>
-          <p class="text-md text-center leading-8">
-            We plan on creating and supporting new evals for practical, everyday tasks. Rather than relying on academic-intensive datasets, you will be able to leverage custom datasets focused on use-cases such as SQL DB management to spreadsheet analysis. 
+          <p
+            class="font-semibold text-[#414651] dark:text-white text-xl text-center"
+          >
+            In-depth Analysis
+          </p>
+          <p
+            class="text-[#414651] dark:text-white text-base font-normal text-center"
+          >
+            Evaluations are run on-demand, requiring no manual code execution or
+            library management. All evaluation results for public models are
+            displayed in a comprehensive leaderboard.
           </p>
         </div>
 
@@ -222,13 +221,64 @@
             class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
           >
             <i
-              class="ph ph-browser text-2xl font-bold text-[#0038ff] dark:text-white"
+              class="ph ph-globe text-2xl font-bold text-[#0038ff] dark:text-white"
             ></i>
           </div>
-          <p class="font-bold text-xl text-center">Enterprise Focus</p>
-          <p class="text-md text-center leading-8">
-            We are currently working on an enterprise-specific experience, that will allow for propiterary datasets and private models to be seamlessly integrated within the LayerLens platform. 
-            
+          <p
+            class="font-semibold text-[#414651] dark:text-white text-xl text-center"
+          >
+            Wide Coverage
+          </p>
+          <p
+            class="text-[#414651] dark:text-white text-base font-normal text-center"
+          >
+            We currently support over 200 generative AI models and over 50
+            evaluation datasets, across numerous categories and use-cases.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-y-5 items-center">
+          <div
+            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
+          >
+            <i
+              class="ph ph-stack text-2xl font-bold text-[#0038ff] dark:text-white"
+            ></i>
+          </div>
+          <p
+            class="font-semibold text-[#414651] dark:text-white text-xl text-center"
+          >
+            Use-Case Specific Evals
+          </p>
+          <p
+            class="text-[#414651] dark:text-white text-base font-normal text-center"
+          >
+            We plan on creating and supporting new evals for practical, everyday
+            tasks. Rather than relying on academic-intensive datasets, you will
+            be able to leverage custom datasets focused on use-cases such as SQL
+            DB management to spreadsheet analysis.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-y-5 items-center">
+          <div
+            class="rounded-md w-12 h-12 p-3 border border-gray-200 dark:border-white flex items-center justify-center"
+          >
+            <i
+              class="ph ph-lock text-2xl font-bold text-[#0038ff] dark:text-white"
+            ></i>
+          </div>
+          <p
+            class="font-semibold text-[#414651] dark:text-white text-xl text-center"
+          >
+            Enterprise Focus
+          </p>
+          <p
+            class="text-[#414651] dark:text-white text-base font-normal text-center"
+          >
+            We are currently working on an enterprise-specific experience, that
+            will allow for propiterary datasets and private models to be
+            seamlessly integrated within the LayerLens platform.
           </p>
         </div>
 
@@ -240,25 +290,31 @@
               class="ph ph-chat-circle-dots text-2xl font-bold text-[#0038ff] dark:text-white"
             ></i>
           </div>
-          <p class="font-bold text-xl text-center">Call to Innovators</p>
-          <p class="text-md text-center leading-8">
+          <p
+            class="font-semibold text-[#414651] dark:text-white text-xl text-center"
+          >
+            Call to Innovators
+          </p>
+          <p
+            class="text-[#414651] dark:text-white text-base font-normal text-center"
+          >
             If you are passionate about jailbreaking, datasets, and distributed
-            computing, and want to join a team of skilled engineers, reach out! Alternatively, if you are building at the edge of AI and want to integrate evals into your application, we would love to talk to you. 
+            computing, and want to join a team of skilled engineers, reach out!
+            Alternatively, if you are building at the edge of AI and want to
+            integrate evals into your application, we would love to talk to you.
           </p>
         </div>
       </div>
     </section>
 
     <footer class="bg-[#151918] py-20">
-      <div class="flex gap-y-6 flex-col container mx-auto px-10 lg:px-32">
+      <div class="flex gap-y-6 flex-col container mx-auto px-10 lg:px-[80px]">
         <div
           class="flex lg:flex-row flex-col gap-y-5 py-5 justify-between items-center text-white"
         >
           <div class="flex flex-col gap-y-3">
-            <p class="text-2xl font-bold">Join Our Newsletter</p>
-            <p class="text-md">
-              We'll send you occasional updates. No spam.
-            </p>
+            <p class="text-2xl font-semibold">Join Our Newsletter</p>
+            <p class="text-md">We'll send you occasional updates. No spam.</p>
           </div>
           <div
             class="flex flex-col lg:flex-row gap-y-5 gap-x-5 lg:items-center"
@@ -273,7 +329,7 @@
                 type="email"
                 name="EMAIL"
                 placeholder="Enter your E-Mail Address"
-                class="bg-white p-3 rounded-md max-w-[300px] text-black placeholder-gray-500 focus:outline-none"
+                class="bg-white p-3 rounded-md w-[242px] h-[44px] text-black placeholder-gray-500 focus:outline-none"
                 required
               />
 
@@ -288,7 +344,7 @@
 
               <input
                 type="submit"
-                class="px-4 py-3 rounded-md font-semibold bg-[#0038ff] hover:bg-purple-800 cursor-pointer text-white"
+                class="px-4 py-3 h-[44px] rounded-lg font-semibold bg-[#0038ff] hover:bg-purple-800 cursor-pointer text-white"
                 value="Stay Updated"
               />
             </form>
@@ -301,7 +357,9 @@
           class="flex flex-col lg:flex-row gap-y-5 text-white justify-between items-center"
         >
           <img class="w-[200px]" src="assets/dark_logo.png" alt="LayerLens" />
-          <p class="text-md">&copy; LayerLens. All rights reserved.</p>
+          <p class="text-base font-semibold">
+            &copy; LayerLens. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
